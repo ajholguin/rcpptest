@@ -1,0 +1,11 @@
+Package: rcpptest
+Type: Package
+Title: Testing Rcpp Functions
+Version: 1.0
+Date: 2018-12-04
+Author: Andrew Holguin
+Maintainer: Andrew Holguin <ajholguin1@gmail.com>
+Description: Just testing some Rcpp functions for now.
+License: GPL (>= 2)
+Imports: Rcpp (>= 0.12.12)
+LinkingTo: Rcpp
