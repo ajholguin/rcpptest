@@ -5,19 +5,31 @@
 
 using namespace Rcpp;
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _rcpptest_rcpp_hello_world() {
+// one
+int one();
+RcppExport SEXP _rcpptest_one() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
+    rcpp_result_gen = Rcpp::wrap(one());
+    return rcpp_result_gen;
+END_RCPP
+}
+// signC
+int signC(double x);
+RcppExport SEXP _rcpptest_signC(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(signC(x));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_rcpptest_rcpp_hello_world", (DL_FUNC) &_rcpptest_rcpp_hello_world, 0},
+    {"_rcpptest_one", (DL_FUNC) &_rcpptest_one, 0},
+    {"_rcpptest_signC", (DL_FUNC) &_rcpptest_signC, 1},
     {NULL, NULL, 0}
 };
 

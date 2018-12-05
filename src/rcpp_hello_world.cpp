@@ -3,11 +3,17 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-List rcpp_hello_world() {
+int one() {
+  return 1;
+}
 
-    CharacterVector x = CharacterVector::create( "foo", "bar" )  ;
-    NumericVector y   = NumericVector::create( 0.0, 1.0 ) ;
-    List z            = List::create( x, y ) ;
-
-    return z ;
+// [[Rcpp::export]]
+int signC(double x) {
+  if (x > 0) {
+    return 1;
+  } else if (x == 0) {
+    return 0;
+  } else {
+    return -1;
+  }
 }
