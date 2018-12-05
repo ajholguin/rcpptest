@@ -26,10 +26,35 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// sumC
+double sumC(NumericVector x);
+RcppExport SEXP _rcpptest_sumC(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(sumC(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// pdistC
+NumericVector pdistC(double x, NumericVector ys);
+RcppExport SEXP _rcpptest_pdistC(SEXP xSEXP, SEXP ysSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type ys(ysSEXP);
+    rcpp_result_gen = Rcpp::wrap(pdistC(x, ys));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_one", (DL_FUNC) &_rcpptest_one, 0},
     {"_rcpptest_signC", (DL_FUNC) &_rcpptest_signC, 1},
+    {"_rcpptest_sumC", (DL_FUNC) &_rcpptest_sumC, 1},
+    {"_rcpptest_pdistC", (DL_FUNC) &_rcpptest_pdistC, 2},
     {NULL, NULL, 0}
 };
 

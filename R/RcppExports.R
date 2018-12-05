@@ -9,3 +9,11 @@ signC <- function(x) {
     .Call('_rcpptest_signC', PACKAGE = 'rcpptest', x)
 }
 
+sumC <- function(x) {
+    .Call('_rcpptest_sumC', PACKAGE = 'rcpptest', x)
+}
+
+pdistC <- function(x, ys) {
+    .Call('_rcpptest_pdistC', PACKAGE = 'rcpptest', x, ys)
+}
+
