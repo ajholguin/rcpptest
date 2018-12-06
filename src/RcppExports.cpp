@@ -49,12 +49,24 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// rowSumsC
+NumericVector rowSumsC(NumericMatrix x);
+RcppExport SEXP _rcpptest_rowSumsC(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(rowSumsC(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_one", (DL_FUNC) &_rcpptest_one, 0},
     {"_rcpptest_signC", (DL_FUNC) &_rcpptest_signC, 1},
     {"_rcpptest_sumC", (DL_FUNC) &_rcpptest_sumC, 1},
     {"_rcpptest_pdistC", (DL_FUNC) &_rcpptest_pdistC, 2},
+    {"_rcpptest_rowSumsC", (DL_FUNC) &_rcpptest_rowSumsC, 1},
     {NULL, NULL, 0}
 };
 

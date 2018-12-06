@@ -1,7 +1,7 @@
 Package: rcpptest
 Type: Package
 Title: Testing Rcpp Functions
-Version: 1.0
+Version: 0.1
 Date: 2018-12-04
 Author: Andrew Holguin
 Maintainer: Andrew Holguin <ajholguin1@gmail.com>

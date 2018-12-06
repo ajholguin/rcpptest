@@ -17,3 +17,7 @@ pdistC <- function(x, ys) {
     .Call('_rcpptest_pdistC', PACKAGE = 'rcpptest', x, ys)
 }
 
+rowSumsC <- function(x) {
+    .Call('_rcpptest_rowSumsC', PACKAGE = 'rcpptest', x)
+}
+
