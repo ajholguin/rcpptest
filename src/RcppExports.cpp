@@ -60,6 +60,17 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// allC
+bool allC(LogicalVector x);
+RcppExport SEXP _rcpptest_allC(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< LogicalVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(allC(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_one", (DL_FUNC) &_rcpptest_one, 0},
@@ -67,6 +78,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_sumC", (DL_FUNC) &_rcpptest_sumC, 1},
     {"_rcpptest_pdistC", (DL_FUNC) &_rcpptest_pdistC, 2},
     {"_rcpptest_rowSumsC", (DL_FUNC) &_rcpptest_rowSumsC, 1},
+    {"_rcpptest_allC", (DL_FUNC) &_rcpptest_allC, 1},
     {NULL, NULL, 0}
 };
 

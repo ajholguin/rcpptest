@@ -21,3 +21,7 @@ rowSumsC <- function(x) {
     .Call('_rcpptest_rowSumsC', PACKAGE = 'rcpptest', x)
 }
 
+allC <- function(x) {
+    .Call('_rcpptest_allC', PACKAGE = 'rcpptest', x)
+}
+
