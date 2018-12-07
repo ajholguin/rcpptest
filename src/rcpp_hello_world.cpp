@@ -1,5 +1,8 @@
 #include <Rcpp.h>
+#include <math.h>
 using namespace Rcpp;
+
+// [[Rcpp::plugins(cpp11)]]
 
 // [[Rcpp::export]]
 int one() {
@@ -8,7 +11,9 @@ int one() {
 
 // [[Rcpp::export]]
 int signC(double x) {
-  if (x > 0) {
+  if (std::isnan(x)) {
+    return NA_INTEGER;
+  } else if (x > 0) {
     return 1;
   } else if (x == 0) {
     return 0;
@@ -16,16 +21,35 @@ int signC(double x) {
     return -1;
   }
 }
+/*** R
+sign(-2); signC(-2)
+sign(0); signC(0)
+sign(2); signC(2)
+sign(NA_real_); signC(NA_real_)
+*/
 
 // [[Rcpp::export]]
-double sumC(NumericVector x) {
+double sumC(NumericVector x, bool narm = true) {
   int n = x.size();
   double total = 0;
   for (int i = 0; i < n; ++i) {
-    total += x[i];
+    if (narm & NumericVector::is_na(x[i])) {
+      continue;
+    } if (!narm & NumericVector::is_na(x[i])) {
+      return NA_REAL;
+    } else {
+      total += x[i];
+    }
   }
   return total;
 }
+/*** R
+x <- 1:4
+sum(x); sumC(x)
+x <- c(1, NA, 3, 4)
+sum(x, na.rm = FALSE); sumC(x, narm = FALSE)
+sum(x, na.rm = TRUE); sumC(x, narm = TRUE)
+*/
 
 // [[Rcpp::export]]
 NumericVector pdistC(double x, NumericVector ys) {

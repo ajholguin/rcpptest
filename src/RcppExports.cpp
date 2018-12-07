@@ -27,13 +27,14 @@ BEGIN_RCPP
 END_RCPP
 }
 // sumC
-double sumC(NumericVector x);
-RcppExport SEXP _rcpptest_sumC(SEXP xSEXP) {
+double sumC(NumericVector x, bool narm);
+RcppExport SEXP _rcpptest_sumC(SEXP xSEXP, SEXP narmSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(sumC(x));
+    Rcpp::traits::input_parameter< bool >::type narm(narmSEXP);
+    rcpp_result_gen = Rcpp::wrap(sumC(x, narm));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -109,7 +110,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_one", (DL_FUNC) &_rcpptest_one, 0},
     {"_rcpptest_signC", (DL_FUNC) &_rcpptest_signC, 1},
-    {"_rcpptest_sumC", (DL_FUNC) &_rcpptest_sumC, 1},
+    {"_rcpptest_sumC", (DL_FUNC) &_rcpptest_sumC, 2},
     {"_rcpptest_pdistC", (DL_FUNC) &_rcpptest_pdistC, 2},
     {"_rcpptest_rowSumsC", (DL_FUNC) &_rcpptest_rowSumsC, 1},
     {"_rcpptest_allC", (DL_FUNC) &_rcpptest_allC, 1},
