@@ -74,3 +74,49 @@ bool allC(LogicalVector x) {
 x <- c(TRUE, FALSE); allC(x)
 y <- c(TRUE, TRUE); allC(y)
 */
+
+// [[Rcpp::export]]
+NumericVector cumprodC(NumericVector x) {
+  int n = x.size();
+  NumericVector out(n);
+  out[0] = x[0];
+  for (int i = 1; i < n; i++) {
+    out[i] = out[i - 1] * x[i];
+  }
+  return out;
+}
+/*** R
+cumprod(1:5)
+cumprodC(1:5)
+*/
+
+// [[Rcpp::export]]
+NumericVector diffC(NumericVector x, int lag = 1) {
+  int n = x.size();
+  NumericVector out(n - lag);
+  for (int i = 0; i < out.size(); i++) {
+    out[i] = x[i + lag] - x[i];
+  }
+  return out;
+}
+/*** R
+x <- c(2, 4, 1, 4, 3)
+diff(x); diffC(x)
+diff(x, lag = 2); diffC(x, lag = 2)
+*/
+
+// [[Rcpp::export]]
+NumericVector rangeC(NumericVector x) {
+  int n = x.size();
+  NumericVector out(2);
+  out[0] = x[0];
+  out[1] = x[0];
+  for (int i = 0; i < n; i++) {
+    if (x[i] < out[0]) out[0] = x[i];
+    if (x[i] > out[1]) out[1] = x[i];
+  }
+  return out;
+}
+/*** R
+range(x); rangeC(x)
+*/

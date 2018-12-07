@@ -71,6 +71,40 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// cumprodC
+NumericVector cumprodC(NumericVector x);
+RcppExport SEXP _rcpptest_cumprodC(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(cumprodC(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// diffC
+NumericVector diffC(NumericVector x, int lag);
+RcppExport SEXP _rcpptest_diffC(SEXP xSEXP, SEXP lagSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type lag(lagSEXP);
+    rcpp_result_gen = Rcpp::wrap(diffC(x, lag));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rangeC
+NumericVector rangeC(NumericVector x);
+RcppExport SEXP _rcpptest_rangeC(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(rangeC(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_one", (DL_FUNC) &_rcpptest_one, 0},
@@ -79,6 +113,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_pdistC", (DL_FUNC) &_rcpptest_pdistC, 2},
     {"_rcpptest_rowSumsC", (DL_FUNC) &_rcpptest_rowSumsC, 1},
     {"_rcpptest_allC", (DL_FUNC) &_rcpptest_allC, 1},
+    {"_rcpptest_cumprodC", (DL_FUNC) &_rcpptest_cumprodC, 1},
+    {"_rcpptest_diffC", (DL_FUNC) &_rcpptest_diffC, 2},
+    {"_rcpptest_rangeC", (DL_FUNC) &_rcpptest_rangeC, 1},
     {NULL, NULL, 0}
 };
 

@@ -25,3 +25,15 @@ allC <- function(x) {
     .Call('_rcpptest_allC', PACKAGE = 'rcpptest', x)
 }
 
+cumprodC <- function(x) {
+    .Call('_rcpptest_cumprodC', PACKAGE = 'rcpptest', x)
+}
+
+diffC <- function(x, lag = 1L) {
+    .Call('_rcpptest_diffC', PACKAGE = 'rcpptest', x, lag)
+}
+
+rangeC <- function(x) {
+    .Call('_rcpptest_rangeC', PACKAGE = 'rcpptest', x)
+}
+
