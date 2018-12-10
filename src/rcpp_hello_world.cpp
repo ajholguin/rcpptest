@@ -1,5 +1,7 @@
 #include <Rcpp.h>
 #include <math.h>
+#include <numeric>
+#include <algorithm>
 using namespace Rcpp;
 
 // [[Rcpp::plugins(cpp11)]]
@@ -143,4 +145,46 @@ NumericVector rangeC(NumericVector x) {
 }
 /*** R
 range(x); rangeC(x)
+*/
+
+// [[Rcpp::export]]
+double sum3(NumericVector x)  {
+  double total = 0;
+  NumericVector::iterator it;
+  for (it = x.begin(); it != x.end(); ++it) {
+    total += *it;
+  }
+  return total;
+}
+/*** R
+sum(1:3)
+sum3(1:3)
+*/
+
+// [[Rcpp::export]]
+double sum4(NumericVector x)  {
+  return std::accumulate(x.begin(), x.end(), 0.0);
+}
+/*** R
+sum(1:3)
+sum4(1:3)
+*/
+
+// [[Rcpp::export]]
+double medianC(NumericVector x) {
+  int n = x.size();
+  double out;
+  if (n % 2 == 0) {
+    std::partial_sort(x.begin(), x.begin() + n / 2 + 1, x.end());
+    out = (x[n / 2 - 1] + x[n / 2]) / 2;
+  } else {
+    std::partial_sort(x.begin(), x.begin() + (n + 1) / 2, x.end());
+    out = x[(n + 1) / 2 - 1];
+  }
+  return out;
+}
+/*** R
+x <- rnorm(11); x
+median(x)
+medianC(x)
 */

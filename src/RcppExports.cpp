@@ -106,6 +106,39 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// sum3
+double sum3(NumericVector x);
+RcppExport SEXP _rcpptest_sum3(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(sum3(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// sum4
+double sum4(NumericVector x);
+RcppExport SEXP _rcpptest_sum4(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(sum4(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// medianC
+double medianC(NumericVector x);
+RcppExport SEXP _rcpptest_medianC(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(medianC(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_one", (DL_FUNC) &_rcpptest_one, 0},
@@ -117,6 +150,9 @@ static const R_CallMethodDef CallEntries[] = {
     {"_rcpptest_cumprodC", (DL_FUNC) &_rcpptest_cumprodC, 1},
     {"_rcpptest_diffC", (DL_FUNC) &_rcpptest_diffC, 2},
     {"_rcpptest_rangeC", (DL_FUNC) &_rcpptest_rangeC, 1},
+    {"_rcpptest_sum3", (DL_FUNC) &_rcpptest_sum3, 1},
+    {"_rcpptest_sum4", (DL_FUNC) &_rcpptest_sum4, 1},
+    {"_rcpptest_medianC", (DL_FUNC) &_rcpptest_medianC, 1},
     {NULL, NULL, 0}
 };
 

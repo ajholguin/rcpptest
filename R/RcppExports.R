@@ -37,3 +37,15 @@ rangeC <- function(x) {
     .Call('_rcpptest_rangeC', PACKAGE = 'rcpptest', x)
 }
 
+sum3 <- function(x) {
+    .Call('_rcpptest_sum3', PACKAGE = 'rcpptest', x)
+}
+
+sum4 <- function(x) {
+    .Call('_rcpptest_sum4', PACKAGE = 'rcpptest', x)
+}
+
+medianC <- function(x) {
+    .Call('_rcpptest_medianC', PACKAGE = 'rcpptest', x)
+}
+
