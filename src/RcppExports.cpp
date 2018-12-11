@@ -5,6 +5,16 @@
 
 using namespace Rcpp;
 
+// main
+int main();
+RcppExport SEXP _rcpptest_main() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(main());
+    return rcpp_result_gen;
+END_RCPP
+}
 // one
 int one();
 RcppExport SEXP _rcpptest_one() {
@@ -141,6 +151,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_rcpptest_main", (DL_FUNC) &_rcpptest_main, 0},
     {"_rcpptest_one", (DL_FUNC) &_rcpptest_one, 0},
     {"_rcpptest_signC", (DL_FUNC) &_rcpptest_signC, 1},
     {"_rcpptest_sumC", (DL_FUNC) &_rcpptest_sumC, 2},
