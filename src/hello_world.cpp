@@ -17,12 +17,12 @@ int main() {
   Rcpp::Function readline = base["readline"];
   
   // get the value
-  Rcpp::StringVector rname = "??";
+  Rcpp::StringVector sv_name = "??";
   Rcpp::Rcout << "Enter your name\n";
-  rname = readline();
+  sv_name = readline();
   
   // back to standard c++ and print
-  std::string name = Rcpp::as<std::string>(rname);
+  std::string name = Rcpp::as<std::string>(sv_name);
   Rcpp::Rcout << "Hello " << name << "\n";
   
   return 0;
