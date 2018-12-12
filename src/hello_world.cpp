@@ -1,5 +1,5 @@
 /* 
- * To refresh & improve my c++ skills, I'm going to work through some basic examples.
+ * To refresh & improve my C++ skills, I'm going to work through some basic examples.
  */
 
 #include <Rcpp.h>
@@ -21,7 +21,7 @@ int main() {
   Rcpp::Rcout << "Enter your name\n";
   sv_name = readline();
   
-  // back to standard c++ and print
+  // back to standard C++ and print
   std::string name = Rcpp::as<std::string>(sv_name);
   Rcpp::Rcout << "Hello " << name << "\n";
   
