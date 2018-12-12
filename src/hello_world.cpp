@@ -3,6 +3,7 @@
  */
 
 #include <Rcpp.h>
+#include <string>
 using namespace std;
 
 // [[Rcpp::plugins(cpp11)]]
@@ -10,7 +11,20 @@ using namespace std;
 // for simplicity, just treat this like a "main" function, but print output to R
 // [[Rcpp::export]]
 int main() {
-  Rcpp::Rcout << "hello\n";
+  
+  // use R function readline to get input from the R console
+  Rcpp::Environment base = Rcpp::Environment("package:base");
+  Rcpp::Function readline = base["readline"];
+  
+  // get the value
+  Rcpp::StringVector rname = "??";
+  Rcpp::Rcout << "Enter your name\n";
+  rname = readline();
+  
+  // back to standard c++ and print
+  std::string name = Rcpp::as<std::string>(rname);
+  Rcpp::Rcout << "Hello " << name << "\n";
+  
   return 0;
 }
 /*** R
